@@ -13,6 +13,9 @@ namespace StanksTwoDCharacterController.Runtime.Characters
         [SerializeField]
         private string m_VerticalAxisName = "Vertical";
 
+        [SerializeField]
+        private string m_ShootButton = "Fire1";
+
         private Vector2 m_Input = Vector2.zero;
         private Vector2 m_RawInput = Vector2.zero;
 
@@ -48,6 +51,11 @@ namespace StanksTwoDCharacterController.Runtime.Characters
         /// </summary>
         public event InputHandler OnInputEvent;
 
+        /// <summary>
+        /// Invoked when the user shoots.
+        /// </summary>
+        public event InputHandler OnShootEvent;
+
         #endregion
 
         #region Methods
@@ -55,6 +63,19 @@ namespace StanksTwoDCharacterController.Runtime.Characters
         #region Unity Methods
 
         protected void Update()
+        {
+            HandleMovementInput();
+            HandleCombatInput();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Handles retrieving input for movement.
+        /// </summary>
+        private void HandleMovementInput()
         {
             // Get the horizontal input.
             m_Input.x = UnityEngine.Input.GetAxis(m_HorizontalAxisName);
@@ -69,6 +90,18 @@ namespace StanksTwoDCharacterController.Runtime.Characters
             {
                 // Invoke event!
                 OnInputEvent(m_Input, m_RawInput);
+            }
+        }
+
+        /// <summary>
+        /// Handles retrieving input for combat.
+        /// </summary>
+        private void HandleCombatInput()
+        {
+            if(UnityEngine.Input.GetButtonDown(m_ShootButton))
+            {
+                // Invoke event!
+                OnShootEvent(m_Input, m_RawInput);
             }
         }
 

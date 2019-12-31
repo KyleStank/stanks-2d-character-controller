@@ -1,0 +1,987 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StankUtilities</name>
+    </assembly>
+    <members>
+        <member name="T:StankUtilities.Editor.Core.CustomInspectorBase`1">
+            <summary>
+            Class responsible for setting up the base of a custom inspector.
+            </summary>
+            <typeparam name="T">Type to draw inspector for.</typeparam>
+        </member>
+        <member name="M:StankUtilities.Editor.Core.CustomInspectorBase`1.DrawGUI(`0)">
+            <summary>
+            Draws custom editor GUI.
+            </summary>
+            <param name="target">Target of type T.</param>
+        </member>
+        <member name="M:StankUtilities.Editor.Core.CustomInspectorBase`1.OnInspectorGUI">
+            <summary>
+            Draws the custom GUI.
+            
+            If you need to override this method, just don't inherit from CustomInspectorBase.
+            </summary>
+        </member>
+        <member name="T:StankUtilities.Editor.StankUtilitiesWindow">
+            <summary>
+            Editor class that shows the dashboard window for StankUtilities in the Unity Editor.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Editor.StankUtilitiesWindow.ShowWindow">
+            <summary>
+            Displays the window in the Unity Editor.
+            </summary>
+        </member>
+        <member name="T:StankUtilities.Editor.Utilities.EditorLayoutUtility">
+            <summary>
+            Useful utility class that makes drawing custom editor GUIs easier.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Editor.Utilities.EditorLayoutUtility.DoVerticalLayout(System.Action,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
+            <summary>
+            Wrapper for vertical layout.
+            </summary>
+            <param name="callback">Callback to execute inside layout.</param>
+            <param name="style">Style to apply to layout.</param>
+            <param name="options">Options for layout.</param>
+        </member>
+        <member name="M:StankUtilities.Editor.Utilities.EditorLayoutUtility.DoHorizontalLayout(System.Action,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
+            <summary>
+            Wrapper for horizontal layout.
+            </summary>
+            <param name="callback">Callback to execute inside layout.</param>
+            <param name="style">Style to apply to layout.</param>
+            <param name="options">Options for layout.</param>
+        </member>
+        <member name="M:StankUtilities.Editor.Utilities.EditorLayoutUtility.DoIndent(System.Action)">
+            <summary>
+            Wrapper for indent level.
+            </summary>
+            <param name="callback">Callback to execute inside indent.</param>
+        </member>
+        <member name="T:StankUtilities.Editor.Utilities.EditorUtilities">
+            <summary>
+            Useful utility class that makes extending the Unity Editor easier.
+            </summary>
+        </member>
+        <member name="P:StankUtilities.Editor.Utilities.EditorUtilities.SkinColor">
+            <summary>
+            Returns the skin color. Adjusts color based on if the user has the Pro Unity skin or not.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Editor.Utilities.EditorUtilities.MakeBackgroundTexture(UnityEngine.Color)">
+            <summary>
+            Creates a texture that can be used as a background color for any custom editor field, rect, etc.
+            </summary>
+            <param name="color">Color of background.</param>
+            <returns>Returns a Texture2D that can be used as a background color for any custom editor extension.</returns>
+        </member>
+        <member name="M:StankUtilities.Editor.Utilities.EditorUtilities.FindAssetsByType``1">
+            <summary>
+            Searches the entire project for assets that match a type.
+            </summary>
+            <typeparam name="T">The type to search for.</typeparam>
+            <returns>Returns a List of type T.</returns>
+        </member>
+        <member name="M:StankUtilities.Editor.Utilities.EditorUtilities.FindPrefabsByType``1">
+            <summary>
+            Searches the project for all prefabs with an attached component.
+            </summary>
+            <typeparam name="T">Component that must be attached to the prefabs.</typeparam>
+            <returns>Returns a Type T prefab.</returns>
+        </member>
+        <member name="T:StankUtilities.Runtime.Data.BaseSettings">
+            <summary>
+            Base class that allows for easy creation of settings.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Data.BaseSettings.#ctor(System.String)">
+            <summary>
+            Initializes the settings object.
+            </summary>
+            <param name="filePath">Path at which the settings will be saved and loaded.</param>
+        </member>
+        <member name="P:StankUtilities.Runtime.Data.BaseSettings.FilePath">
+            <summary>
+            Returns the path of the file that the settings are saved and loaded from.
+            </summary>
+        </member>
+        <member name="P:StankUtilities.Runtime.Data.BaseSettings.SettingsData">
+            <summary>
+            Returns the list of settings values.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Data.BaseSettings.OnInitialSetup">
+            <summary>
+            Invoked when the settings are initially setup.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Data.BaseSettings.OnSave">
+            <summary>
+            Invoked when the settings are saved.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Data.BaseSettings.OnLoad">
+            <summary>
+            Invoked when the settings are loaded.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Data.BaseSettings.Save">
+            <summary>
+            Saves all of the settings!
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Data.BaseSettings.Load">
+            <summary>
+            Loads all of the settings!
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Data.BaseSettings.LoadSetting``1(System.String)">
+            <summary>
+            Loads a specific setting from all of the settings data and returns it in a usable format.
+            </summary>
+            <typeparam name="T">Object Type to return.</typeparam>
+            <param name="settingName">Name of the setting to get.</param>
+            <returns>Returns an object of type T that is loaded from the settings list.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Data.BaseSettings.SetSetting``1(System.String,System.Object)">
+            <summary>
+            Sets a specific settings to a value.
+            </summary>
+            <typeparam name="T">Object Type to set setting value.</typeparam>
+            <param name="settingName">Setting to set.</param>
+            <param name="settingValue">Value to set.</param>
+        </member>
+        <member name="T:StankUtilities.Runtime.Data.Setting">
+            <summary>
+            Class that simply holds information that can be used as "settings" data.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Data.Setting.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes the setting.
+            </summary>
+            <param name="settingName">Name of the setting.</param>
+            <param name="settingValue">Value of the setting.</param>
+        </member>
+        <member name="P:StankUtilities.Runtime.Data.Setting.SettingName">
+            <summary>
+            Returns the name of the setting.
+            </summary>
+        </member>
+        <member name="P:StankUtilities.Runtime.Data.Setting.SettingValue">
+            <summary>
+            Returns the value of the setting.
+            </summary>
+        </member>
+        <member name="T:StankUtilities.Runtime.Events.EventSystem">
+            <summary>
+            Generic event system that allows for global and object-specific events in any Unity project.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent(System.String,System.Action)">
+            <summary>
+            Registers a global event with no parameters.
+            </summary>
+            <param name="eventName">Name of event.</param>
+            <param name="action">Method to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent(StankUtilities.Runtime.ScriptableObjects.GameEvent,System.Action)">
+            <summary>
+            Registers a global event with no parameters.
+            </summary>
+            <param name="gameEvent">Game event.</param>
+            <param name="action">Method to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent(System.Object,System.String,System.Action)">
+            <summary>
+            Registers an object event with no parameters.
+            </summary>
+            <param name="obj">The target object.</param>
+            <param name="eventName">Name of event.</param>
+            <param name="action">Method to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent(System.Object,StankUtilities.Runtime.ScriptableObjects.GameEvent,System.Action)">
+            <summary>
+            Registers an object event with no parameters.
+            </summary>
+            <param name="obj">The target object.</param>
+            <param name="gameEvent">Game event.</param>
+            <param name="action">Method to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent``1(System.String,System.Action{``0})">
+            <summary>
+            Registers a global event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="eventName">Name of event.</param>
+            <param name="action">Method to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent``1(StankUtilities.Runtime.ScriptableObjects.GameEvent,System.Action{``0})">
+            <summary>
+            Registers a global event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="gameEvent">Game event.</param>
+            <param name="action">Method to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent``1(System.Object,System.String,System.Action{``0})">
+            <summary>
+            Registers an object event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="obj">The target object.</param>
+            <param name="eventName">Name of event.</param>
+            <param name="action">Method to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent``1(System.Object,StankUtilities.Runtime.ScriptableObjects.GameEvent,System.Action{``0})">
+            <summary>
+            Registers an object event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="obj">The target object.</param>
+            <param name="gameEvent">Game event.</param>
+            <param name="action">Method to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.ExecuteEvent(System.String)">
+            <summary>
+            Executes a global event with no parameters.
+            </summary>
+            <param name="eventName">Name of event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.ExecuteEvent(StankUtilities.Runtime.ScriptableObjects.GameEvent)">
+            <summary>
+            Executes a global event with no parameters.
+            </summary>
+            <param name="gameEvent">Game event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.ExecuteEvent(System.Object,System.String)">
+            <summary>
+            Executes an object event with no parameters.
+            </summary>
+            <param name="obj">The target object.</param>
+            <param name="eventName">Name of event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.ExecuteEvent(System.Object,StankUtilities.Runtime.ScriptableObjects.GameEvent)">
+            <summary>
+            Executes an object event with no parameters.
+            </summary>
+            <param name="obj">The target object.</param>
+            <param name="gameEvent">Game event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.ExecuteEvent``1(System.String,``0)">
+            <summary>
+            Executes a global event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="eventName">Name of event.</param>
+            <param name="arg1">The parameter.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.ExecuteEvent``1(StankUtilities.Runtime.ScriptableObjects.GameEvent,``0)">
+            <summary>
+            Executes a global event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="gameEvent">Game event.</param>
+            <param name="arg1">The parameter.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.ExecuteEvent``1(System.Object,System.String,``0)">
+            <summary>
+            Executes an object event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="obj">The target object.</param>
+            <param name="eventName">Name of event.</param>
+            <param name="arg1">The parameter.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.ExecuteEvent``1(System.Object,StankUtilities.Runtime.ScriptableObjects.GameEvent,``0)">
+            <summary>
+            Executes an object event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="obj">The target object.</param>
+            <param name="gameEvent">Game event.</param>
+            <param name="arg1">The parameter.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.UnregisterEvent(System.String,System.Action)">
+            <summary>
+            Unregisters a global event with no parameters.
+            </summary>
+            <param name="eventName">Name of event.</param>
+            <param name="action">Method to remove from event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.UnregisterEvent(StankUtilities.Runtime.ScriptableObjects.GameEvent,System.Action)">
+            <summary>
+            Unregisters a global event with no parameters.
+            </summary>
+            <param name="gameEvent">Game event.</param>
+            <param name="action">Method to remove from event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.UnregisterEvent(System.Object,System.String,System.Action)">
+            <summary>
+            Unregisters an object event with no parameters.
+            </summary>
+            <param name="obj">The target object.</param>
+            <param name="eventName">Name of event.</param>
+            <param name="action">Method to remove from event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.UnregisterEvent(System.Object,StankUtilities.Runtime.ScriptableObjects.GameEvent,System.Action)">
+            <summary>
+            Unregisters an object event with no parameters.
+            </summary>
+            <param name="obj">The target object.</param>
+            <param name="gameEvent">Game event.</param>
+            <param name="action">Method to remove from event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.UnregisterEvent``1(System.String,System.Action{``0})">
+            <summary>
+            Unregisters a global event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="eventName">Name of event.</param>
+            <param name="action">Method to remove from event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.UnregisterEvent``1(StankUtilities.Runtime.ScriptableObjects.GameEvent,System.Action{``0})">
+            <summary>
+            Unregisters a global event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="gameEvent">Game event.</param>
+            <param name="action">Method to remove from event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.UnregisterEvent``1(System.Object,System.String,System.Action{``0})">
+            <summary>
+            Unregisters an object event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="obj">The target object.</param>
+            <param name="eventName">Name of event.</param>
+            <param name="action">Method to remove from event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.UnregisterEvent``1(System.Object,StankUtilities.Runtime.ScriptableObjects.GameEvent,System.Action{``0})">
+            <summary>
+            Unregisters an object event with one parameter.
+            </summary>
+            <typeparam name="T1">The object type of the parameter.</typeparam>
+            <param name="obj">The target object.</param>
+            <param name="gameEvent">Game event.</param>
+            <param name="action">Method to remove from event.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent(System.String,StankUtilities.Runtime.Events.InvokableActionBase)">
+            <summary>
+            Registers a global event.
+            </summary>
+            <param name="eventName">Name of event.</param>
+            <param name="invokableAction">InvokableAction to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.RegisterEvent(System.Object,System.String,StankUtilities.Runtime.Events.InvokableActionBase)">
+            <summary>
+            Registers an object event.
+            </summary>
+            <param name="obj">The target object.</param>
+            <param name="eventName">Name of event.</param>
+            <param name="invokableAction">InvokableAction to invoke when the event is executed.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.GetActionList(System.String)">
+            <summary>
+            Returns the list of InvokableActions from a global event.
+            </summary>
+            <param name="eventName">Name of event.</param>
+            <returns>Returns a List of InvokableActionBase from a global event.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.GetActionList(System.Object,System.String)">
+            <summary>
+            Returns the list of InvokableActions from an object event.
+            </summary>
+            <param name="obj">The target object.</param>
+            <param name="eventName">Name of event.</param>
+            <returns>Returns a List of InvokableActionBase from an object event.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.CheckForEventRemoval(System.String,System.Collections.Generic.List{StankUtilities.Runtime.Events.InvokableActionBase})">
+            <summary>
+            Determines if the event can be removed from the global event dictionary.
+            </summary>
+            <param name="eventName">Name of event.</param>
+            <param name="actionList">List of InvokableActions.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.EventSystem.CheckForEventRemoval(System.Object,System.String,System.Collections.Generic.List{StankUtilities.Runtime.Events.InvokableActionBase})">
+            <summary>
+            Updates the event table to determine if any objects can be removed.
+            </summary>
+            <param name="obj">The target object.</param>
+            <param name="eventName">Name of event.</param>
+            <param name="actionList">List of InvokableActions.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.InvokableAction.Initialize(System.Action)">
+            <summary>
+            Initializes the action to the specificed function.
+            </summary>
+            <param name="action">The function to initialize the action to.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.InvokableAction.Invoke">
+            <summary>
+            Invokes the action.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.InvokableAction.IsAction(System.Action)">
+            <summary>
+            Does the inputted action match the object that the InvokeableAction represents?
+            </summary>
+            <param name="action">The action to test against.</param>
+            <returns>True if the actions match.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.InvokableAction`1.Initialize(System.Action{`0})">
+            <summary>
+            Initializes the action to the specificed function.
+            </summary>
+            <param name="action">The function to initialize the action to.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.InvokableAction`1.Invoke(`0)">
+            <summary>
+            Invokes the action.
+            </summary>
+            <param name="arg1">The first parameter.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Events.InvokableAction`1.IsAction(System.Action{`0})">
+            <summary>
+            Does the inputted action match the object that the InvokeableAction represents?
+            </summary>
+            <param name="action">The action to test against.</param>
+            <returns>True if the actions match.</returns>
+        </member>
+        <member name="T:StankUtilities.Runtime.ScriptableObjects.GameEvent">
+            <summary>
+            ScriptableObject that allows us to use an asset in the Unity inspector to interact with the EventSystem.
+            
+            There is a lot of potential for this to be used with any custom game logic.
+            At the very least, this can be used as an easy way to keep track of event names with a real asset, instead of relying on literal strings in code.
+            </summary>
+        </member>
+        <member name="P:StankUtilities.Runtime.ScriptableObjects.GameEvent.EventName">
+            <summary>
+            Returns the event's name.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.ScriptableObjects.GameEvent.ExecuteEvent">
+            <summary>
+            Executes the game event.
+            </summary>
+        </member>
+        <member name="T:StankUtilities.Runtime.ScriptableObjects.Variables.INumericalVariable`1">
+            <summary>
+            Interface that allows us to define any type as a numerical variable.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:StankUtilities.Runtime.ScriptableObjects.Variables.INumericalVariable`1.IncrementValue(`0)">
+            <summary>
+            Increments the runtime value by a specified amount.
+            </summary>
+            <param name="amount">Amount to increment.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.ScriptableObjects.Variables.INumericalVariable`1.DecrementValue(`0)">
+            <summary>
+            Decrements the runtime value by a specified amount.
+            </summary>
+            <param name="amount">Amount to decrement.</param>
+        </member>
+        <member name="T:StankUtilities.Runtime.ScriptableObjects.Variables.Variable`1">
+            <summary>
+            Generic ScriptableObject that allows us to give any type an Initial and Runtime value.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+        </member>
+        <member name="P:StankUtilities.Runtime.ScriptableObjects.Variables.Variable`1.InitialValue">
+            <summary>
+            The initial value of the variable before runtime.
+            </summary>
+        </member>
+        <member name="P:StankUtilities.Runtime.ScriptableObjects.Variables.Variable`1.RuntimeValue">
+            <summary>
+            The runtime/current value of the variable. Gets reset when game is started and exited. Any changes DO NOT carry over to the inspector.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.ScriptableObjects.Variables.Variable`1.OnAfterDeserialize">
+            <summary>
+            Set the runtime value to be equal to the inital value when the game begins.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.ScriptableObjects.Variables.Variable`1.OnBeforeSerialize">
+            <summary>
+            Does nothing at the moment.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.ScriptableObjects.Variables.Variable`1.SetValue(`0)">
+            <summary>
+            Sets the value of the variable.
+            </summary>
+            <param name="value">Value to set variable to.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.ScriptableObjects.Variables.Variable`1.op_Implicit(StankUtilities.Runtime.ScriptableObjects.Variables.Variable{`0})~`0">
+            <summary>
+            Allows the RuntimeValue to be set by 
+            </summary>
+            <param name="variable"></param>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.AssetUtility">
+            <summary>
+            Useful class that adds the ability to easily create different assets in code.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.AssetUtility.MakeTexture(System.Int32,System.Int32,UnityEngine.Color)">
+            <summary>
+            Create a one colorde texture with a specified width and height.
+            </summary>
+            <param name="width">Width of the texture.</param>
+            <param name="height">Height of the texture.</param>
+            <param name="color">Color of the texture.</param>
+            <returns>Returns a Texture2D with a width, height, and single color.</returns>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.DebuggerUtility">
+            <summary>
+            Useful class that makes Unity log messages more pretty.
+            </summary>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.DebuggerUtility.LogFormat">
+            <summary>
+            Defines the format that a log will be outputted.
+            </summary>
+        </member>
+        <member name="F:StankUtilities.Runtime.Utilities.DebuggerUtility.LogFormat.Log">
+            <summary>
+            Normal log format. Useful for displaying general information.
+            </summary>
+        </member>
+        <member name="F:StankUtilities.Runtime.Utilities.DebuggerUtility.LogFormat.Warning">
+            <summary>
+            Warning log format. Useful for displaying information that could lead to issues.
+            </summary>
+        </member>
+        <member name="F:StankUtilities.Runtime.Utilities.DebuggerUtility.LogFormat.Error">
+            <summary>
+            Error log format. Useful for displaying information that will eventually or already has broken something.
+            </summary>
+        </member>
+        <member name="P:StankUtilities.Runtime.Utilities.DebuggerUtility.LogPrefix">
+            <summary>
+            The prefix that is displayed in front of log messages.
+            </summary>
+        </member>
+        <member name="P:StankUtilities.Runtime.Utilities.DebuggerUtility.LogColor">
+            <summary>
+            The color of the prefix that is displayed in front of log messages.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.DebuggerUtility.Log(System.Object)">
+            <summary>
+            Logs a message to the Unity console with pretty formatting.
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.DebuggerUtility.LogWarning(System.Object)">
+            <summary>
+            Logs a warning to the Unity console with pretty formatting.
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.DebuggerUtility.LogError(System.Object)">
+            <summary>
+            Logs an error to the Unity console with pretty formatting.
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.DebuggerUtility.PrettyDebug(System.Object,StankUtilities.Runtime.Utilities.DebuggerUtility.LogFormat)">
+            <summary>
+            Prints a pretty Unity log statement with color and text formatting.
+            </summary>
+            <param name="msg">The message that we want to print.</param>
+            <param name="logFormat">The type of log that we want to print.</param>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.PersistOnLoad">
+            <summary>
+            MonoBehaviour responsible for making a game object persistent on level loads.
+            </summary>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.FPSDisplay">
+            <summary>
+            Displays the game's FPS.
+            </summary>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.GizmosUtilities">
+            <summary>
+            Useful class that contains various different extensions to Unity's Gizmo system.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.GizmosUtilities.DrawCircle(UnityEngine.Transform,System.Single,UnityEngine.Color,System.Single)">
+            <summary>
+            Draws a 2D circle in 3D space around a transform.
+            </summary>
+            <param name="transform">Transform to draw the circle around.</param>
+            <param name="radius">Radius of the circle.</param>
+            <param name="color">Color of the circle.</param>
+            <param name="yOffset">Optional parameter that adjusts the y offset. Don't change this unless you know what it does.</param>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.IOUtility">
+            <summary>
+            Useful class that handles IO (input and output) operations.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.IOUtility.IsFileExtension(System.String,System.String)">
+            <summary>
+            Checks to see if a file ends with a specific file extension.
+            </summary>
+            <param name="file">File to check.</param>
+            <param name="extension">File extension to check for.</param>
+            <returns>Returns a bool that is true if the file ends with the provided extension. Returns false otherwise.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.IOUtility.IsZipFile(System.String)">
+            <summary>
+            Checks to see if a file is a ZIP archive.
+            </summary>
+            <param name="file">File to check.</param>
+            <returns>Returns a bool that is true if the file is a ZIP archive. Returns false otherwise.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.IOUtility.DirectoryCopy(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies a directory to another location.
+            
+            Source: https://docs.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories
+            </summary>
+            <param name="sourceDirName">Source directory to copy.</param>
+            <param name="destDirName">Destination to copy source to.</param>
+            <param name="copySubDirs">Should sub-directories be copied?</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.IOUtility.ReadAllBytes(System.String)">
+            <summary>
+            Loads an array of bytes from a file.
+            </summary>
+            <param name="filePath">Path to the file to read.</param>
+            <returns>Returns an array of bytes.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.IOUtility.ReadAllBytes(System.IO.Stream)">
+            <summary>
+            Loads an array of bytes from a Stream of data.
+            </summary>
+            <param name="stream">Stream of data.</param>
+            <returns>Returns an array of bytes.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.IOUtility.GetByteArrayFromObject(System.Object)">
+            <summary>
+            Converts an object into an array of bytes.
+            </summary>
+            <param name="obj">Object to convert.</param>
+            <returns>Returns an array of byte[] that was converted from an object.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.IOUtility.OpenZIPArchive(System.String,System.Action{System.IO.FileStream,System.IO.Compression.ZipArchive,System.IO.Compression.ZipArchiveEntry,System.IO.Stream})">
+            <summary>
+            Opens a ZIP Archive and provides a callback to do whatever is needed while the file is open.
+            </summary>
+            <param name="path">Path to the ZIP Archive.</param>
+            <param name="callback">Callback to execute while the ZIP file is open.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.IOUtility.ExtractZIPArchive(System.String,System.String)">
+            <summary>
+            Extracts a ZIP archive to a directory.
+            </summary>
+            <param name="path">Path of ZIP archive to extract.</param>
+            <param name="destination">Destination of directory to extract ZIP archive to.</param>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.JSONUtility">
+            <summary>
+            Useful class that handles manipulating JSON data.
+            </summary>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.JSONUtility.JSONFormatting">
+            <summary>
+            Formatting options for JSONUtility.
+            </summary>
+        </member>
+        <member name="F:StankUtilities.Runtime.Utilities.JSONUtility.JSONFormatting.None">
+            <summary>
+            Applies no formatting to a JSON string.
+            </summary>
+        </member>
+        <member name="F:StankUtilities.Runtime.Utilities.JSONUtility.JSONFormatting.Indented">
+            <summary>
+            Properly indents a JSON string.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.JSONUtility.DeserializeObject``1(System.String)">
+            <summary>
+            Deserializes a JSON string into an object.
+            </summary>
+            <typeparam name="T">Type to convert JSON string to.</typeparam>
+            <param name="json">JSON string to read.</param>
+            <returns>Returns an object of type T from a JSON string.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.JSONUtility.SerializeObject(System.Object,StankUtilities.Runtime.Utilities.JSONUtility.JSONFormatting)">
+            <summary>
+            Serializes an object into a JSON string.
+            </summary>
+            <param name="value">Object to serialize.</param>
+            <param name="formatting">Formatting of JSON string that will be returned.</param>
+            <returns>Returns a JSON string that has been converted to a JSON string from an object.</returns>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.MathUtility">
+            <summary>
+            Useful class that makes performing math operations easier.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.MathUtility.GenerateGUID">
+            <summary>
+            Generates a random GUID.
+            </summary>
+            <returns>Returns a string that contains the new random GUID.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.MathUtility.ExponentiallyGrow(System.Single,System.Single,System.Single)">
+            <summary>
+            Exponentially grows a number.
+            </summary>
+            <param name="initialValue">The initial value to grow.</param>
+            <param name="rate">The rate to grow by.</param>
+            <param name="power">The power to multiply everything by.</param>
+            <returns>Returns a float that has exponentially grown.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.MathUtility.ExponentiallyDecay(System.Single,System.Single,System.Single)">
+            <summary>
+            Exponentially decays a number.
+            </summary>
+            <param name="initialValue">The initial value to decay.</param>
+            <param name="rate">The rate to decay by.</param>
+            <param name="power">The power to multiply everything by.</param>
+            <returns>Returns a float that has exponentially decayed.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.MathUtility.GetLookAtAngle(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Calculates the angle required for a position to rotate towards a target position.
+            </summary>
+            <param name="origin">Origin position.</param>
+            <param name="target">Target position.</param>
+            <param name="direction">Rotation direction.</param>
+            <returns>Returns a Vector3 euler angle.</returns>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.ObjectPool">
+            <summary>
+            It is relatively expensive to instantiate new objects so reuse the objects when possible by placing them in a pool.
+            </summary>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.ObjectPool.PreloadedPrefab">
+            <summary>
+            Specifies a reference to the prefab that should be preloaded along with a preload count.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.Instantiate(UnityEngine.GameObject)">
+            <summary>
+            Instantiate a new GameObject. Use the object pool if a previously used GameObject is located in the pool, otherwise instaniate a new GameObject.
+            </summary>
+            <param name="original">The original GameObject to pooled a copy of.</param>
+            <returns>The pooled/instantiated GameObject.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion)">
+            <summary>
+            Instantiate a new GameObject. Use the object pool if a previously used GameObject is located in the pool, otherwise instaniate a new GameObject.
+            </summary>
+            <param name="original">The original GameObject to pooled a copy of.</param>
+            <param name="position">The position of the pooled GameObject.</param>
+            <param name="rotation">The rotation of the pooled Gameobject.</param>
+            <returns>The pooled/instantiated GameObject.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.Instantiate(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)">
+            <summary>
+            Instantiate a new GameObject. Use the object pool if a previously used GameObject is located in the pool, otherwise instaniate a new GameObject.
+            </summary>
+            <param name="original">The original GameObject to pooled a copy of.</param>
+            <param name="position">The position of the pooled GameObject.</param>
+            <param name="rotation">The rotation of the pooled Gameobject.</param>
+            <param name="parent">The parent to assign to the pooled GameObject.</param>
+            <returns>The pooled/instantiated GameObject.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.InstantiatedWithPool(UnityEngine.GameObject)">
+            <summary>
+            Return if the object was instantiated with the ObjectPool.
+            </summary>
+            <param name="instantiatedObject">The GameObject to check to see if it was instantiated with the ObjectPool.</param>
+            <returns>True if the object was instantiated with the ObjectPool.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.InstantiatedWithPoolInternal(UnityEngine.GameObject)">
+            <summary>
+            Internal method to return if the object was instantiated with the ObjectPool.
+            </summary>
+            <param name="instantiatedObject">The GameObject to check to see if it was instantiated with the ObjectPool.</param>
+            <returns>True if the object was instantiated with the ObjectPool.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.OriginalInstanceID(UnityEngine.GameObject)">
+            <summary>
+            Return the instance ID of the prefab used to spawn the instantiated object.
+            </summary>
+            <param name="instantiatedObject">The GameObject to get the original instance ID</param>
+            <returns>The original instance ID</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.Destroy(UnityEngine.GameObject)">
+            <summary>
+            Return the specified GameObject back to the ObjectPool.
+            </summary>
+            <param name="instantiatedObject">The GameObject to return to the pool.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.Get``1">
+            <summary>
+            Get a pooled object of the specified type using a generic ObjectPool.
+            </summary>
+            <typeparam name="T">The type of object to get.</typeparam>
+            <returns>A pooled object of type T.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.Return``1(``0)">
+            <summary>
+            Return the object back to the generic object pool.
+            </summary>
+            <typeparam name="T">The type of object to return.</typeparam>
+            <param name="obj">The object to return.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.OriginalInstanceIDInternal(UnityEngine.GameObject)">
+            <summary>
+            Internal method to return the instance ID of the prefab used to spawn the instantiated object.
+            </summary>
+            <param name="instantiatedObject">The GameObject to get the original instance ID</param>
+            <returns>The original instance ID</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.DestroyInternal(UnityEngine.GameObject)">
+            <summary>
+            Internal method to return the specified GameObject back to the ObjectPool. Call the corresponding server or client method.
+            </summary>
+            <param name="instantiatedObject">The GameObject to return to the pool.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.DestroyLocal(UnityEngine.GameObject,System.Int32)">
+            <summary>
+            Return the specified GameObject back to the ObjectPool.
+            </summary>
+            <param name="instantiatedObject">The GameObject to return to the pool.</param>
+            <param name="originalInstanceID">The instance ID of the original GameObject.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.ReturnInternal``1(``0)">
+            <summary>
+            Internal method to return the object back to the generic object pool.
+            </summary>
+            <typeparam name="T">The type of object to return.</typeparam>
+            <param name="obj">The object to return.</param>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.GetInternal``1">
+            <summary>
+            Internal method to get a pooled object of the specified type using a generic ObjectPool.
+            </summary>
+            <typeparam name="T">The type of object to get.</typeparam>
+            <returns>A pooled object of type T.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.InstantiateInternal(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)">
+            <summary>
+            Internal method to spawn a new GameObject. Use the object pool if a previously used GameObject is located in the pool, otherwise instaniate a new GameObject.
+            </summary>
+            <param name="original">The original GameObject to pooled a copy of.</param>
+            <param name="position">The position of the pooled GameObject.</param>
+            <param name="rotation">The rotation of the pooled Gameobject.</param>
+            <param name="parent">The parent to assign to the pooled GameObject.</param>
+            <returns>The pooled/instantiated GameObject.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ObjectPool.ObjectFromPool(System.Int32,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)">
+            <summary>
+            An object is trying to be popped from the object pool. Return the pooled object if it exists otherwise null meaning one needs to be insantiated.
+            </summary>
+            <param name="originalInstanceID">The instance id of the GameObject trying to be popped from the pool.</param>
+            <param name="position">The position of the pooled GameObject.</param>
+            <param name="rotation">The rotation of the pooled Gameobject.</param>
+            <param name="parent">The parent to assign to the pooled GameObject.</param>
+            <returns>The pooled GameObject.</returns>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.ReflectionUtility">
+            <summary>
+            Useful class that makes dealing with reflection easier.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ReflectionUtility.GetSubClassesOf``1">
+            <summary>
+            Finds all types of a generic type T that are a sub class of type T.
+            </summary>
+            <typeparam name="T">Generic type that will be the parent class.</typeparam>
+            <returns>Returns a Type Array of all sub classes of the generic type T.</returns>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.ResourceUtility">
+            <summary>
+            Useful class that handles loading assets from outside of Unity.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ResourceUtility.LoadNewSprite(System.String,System.Single)">
+            <summary>
+            Loads a Sprite from an image file.
+            </summary>
+            <param name="filePath">Image file to load.</param>
+            <param name="pixelsPerUnit">Pixels per unit.</param>
+            <returns>Returns a Sprite that was loaded from an image file.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ResourceUtility.LoadNewSprite(UnityEngine.Texture2D,System.Single)">
+            <summary>
+            Loads a Sprite from a Texture.
+            </summary>
+            <param name="spriteTexture">Texture to create Sprite with.</param>
+            <param name="pixelsPerUnit">Pixels per unit.</param>
+            <returns>Returns a Sprite that was loaded from a Texture.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ResourceUtility.LoadNewSpriteFromZIP(System.String,System.String,System.Single)">
+            <summary>
+            Loads a Sprite from an image file inside of a ZIP archive.
+            </summary>
+            <param name="path">Path to the ZIP archive.</param>
+            <param name="textureName">Path to the image inside of the ZIP archive.</param>
+            <param name="pixelsPerUnit">Pixels per unit.</param>
+            <returns>Returns a Sprite that was loaded from a ZIP archive.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ResourceUtility.LoadTexture(System.String)">
+            <summary>
+            Loads an image from a file and converts it to a Texture.
+            </summary>
+            <param name="filePath">Path to the image file.</param>
+            <returns>Returns a Texture2D that was loaded from a file.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ResourceUtility.LoadTextureFromZIP(System.String,System.String)">
+            <summary>
+            Loads an image file from a ZIP archive and converts it to a Texture.
+            </summary>
+            <param name="path">Path to the ZIP archive.</param>
+            <param name="textureName">Path to the image inside of the ZIP archive.</param>
+            <returns>Returns a Texture2D that was loaded from a ZIP archive.</returns>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.ResourceUtility.CaptureScreenshot(System.Int32,System.Int32)">
+            <summary>
+            Captures a screenshot of the screenshot.
+            </summary>
+            <param name="width">Width of the screenshot image.</param>
+            <param name="height">Height of the screenshot image.</param>
+            <returns></returns>
+        </member>
+        <member name="T:StankUtilities.Runtime.Utilities.Singleton`1">
+            <summary>
+            Generic singleton class that converts any MonoBehavior into a singleton.
+            </summary>
+            <typeparam name="T">Type that we want to convert to a singleton.</typeparam>
+        </member>
+        <member name="P:StankUtilities.Runtime.Utilities.Singleton`1.Instance">
+            <summary>
+            Returns the instance of the class.
+            </summary>
+        </member>
+        <member name="P:StankUtilities.Runtime.Utilities.Singleton`1.IsSpawned">
+            <summary>
+            Returns true if the instance is spawned. Returns false otherwise.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.Singleton`1.Awake">
+            <summary>
+            Invoked when the GameObject is awakened.
+            </summary>
+        </member>
+        <member name="M:StankUtilities.Runtime.Utilities.Singleton`1.OnApplicationQuit">
+            <summary>
+            Invoked when the application starts to quit.
+            </summary>
+        </member>
+    </members>
+</doc>
