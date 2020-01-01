@@ -15,6 +15,18 @@ namespace StanksTwoDCharacterController.Runtime.Combat
 
         #region Unity Methods
 
+        private void OnEnable()
+        {
+            // Subscribe to events.
+            m_CharacterInput.OnShootEvent += Use;
+        }
+
+        private void OnDisable()
+        {
+            // Unsubscribe from events.
+            m_CharacterInput.OnShootEvent -= Use;
+        }
+
         private void Awake()
         {
             // Find the character input.
@@ -34,6 +46,11 @@ namespace StanksTwoDCharacterController.Runtime.Combat
         /// Handles the weapon's rotation.
         /// </summary>
         public abstract void HandleRotation();
+
+        /// <summary>
+        /// Uses the weapon.
+        /// </summary>
+        public abstract void Use();
 
         #endregion
 

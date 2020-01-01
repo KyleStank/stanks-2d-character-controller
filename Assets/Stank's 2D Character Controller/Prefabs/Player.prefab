@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7293e4906ca8124282b73e0603a619c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_AxisThreshold: 0.2
 --- !u!1 &904417159
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalAxisName: Horizontal
   m_VerticalAxisName: Vertical
-  m_ShootButton: Fire1
+  m_ShootButton: Shoot
 --- !u!114 &5799660750074521728
 MonoBehaviour:
   m_ObjectHideFlags: 0

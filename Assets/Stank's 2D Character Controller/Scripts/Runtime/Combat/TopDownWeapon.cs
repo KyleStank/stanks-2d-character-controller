@@ -54,6 +54,11 @@ namespace StanksTwoDCharacterController.Runtime.Combat
             transform.localEulerAngles = m_Angle;
         }
 
+        public override void Use()
+        {
+            Debug.Log("Use!");
+        }
+
         #endregion
 
         #endregion

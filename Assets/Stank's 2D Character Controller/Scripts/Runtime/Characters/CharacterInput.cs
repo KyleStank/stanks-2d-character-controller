@@ -42,6 +42,11 @@ namespace StanksTwoDCharacterController.Runtime.Characters
         /// <param name="rawInput">Raw input.</param>
         public delegate void InputHandler(Vector2 input, Vector2 rawInput);
 
+        /// <summary>
+        /// Delegate responsible for responding to an action.
+        /// </summary>
+        public delegate void ActionHandler();
+
         #endregion
 
         #region Events
@@ -54,7 +59,7 @@ namespace StanksTwoDCharacterController.Runtime.Characters
         /// <summary>
         /// Invoked when the user shoots.
         /// </summary>
-        public event InputHandler OnShootEvent;
+        public event ActionHandler OnShootEvent;
 
         #endregion
 
@@ -89,7 +94,7 @@ namespace StanksTwoDCharacterController.Runtime.Characters
             if(UnityEngine.Input.GetButton(m_HorizontalAxisName) || UnityEngine.Input.GetButton(m_VerticalAxisName))
             {
                 // Invoke event!
-                OnInputEvent(m_Input, m_RawInput);
+                OnInputEvent?.Invoke(m_Input, m_RawInput);
             }
         }
 
@@ -98,10 +103,10 @@ namespace StanksTwoDCharacterController.Runtime.Characters
         /// </summary>
         private void HandleCombatInput()
         {
-            if(UnityEngine.Input.GetButtonDown(m_ShootButton))
+            if(UnityEngine.Input.GetAxisRaw(m_ShootButton) > 0.0f)
             {
                 // Invoke event!
-                OnShootEvent(m_Input, m_RawInput);
+                OnShootEvent?.Invoke();
             }
         }
 
